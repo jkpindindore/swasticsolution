@@ -100,6 +100,7 @@ import { useRouter } from "../../context/RouterContext";
 import { Page } from "../../types";
 
 export function Header() {
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("Plastic Testing Equipment");
 
@@ -144,34 +145,31 @@ export function Header() {
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
 
-      {/* TOP CONTACT BAR */}
-      <div className="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-2">
+      {/* TOP BAR */}
+      <div className="bg-blue-900 text-white py-2">
         <div className="max-w-7xl mx-auto px-4 flex justify-between text-sm">
+
           <div className="flex gap-4">
 
-            <a
-              href="tel:+917987485024"
-              className="flex items-center gap-1 hover:text-orange-400"
-            >
+            <a href="tel:+917987485024" className="flex items-center gap-1 hover:text-orange-400">
               <Phone size={14} />
               +91 7987485024
             </a>
 
-            <a
-              href="mailto:enquiry@swasticsolutions.in"
-              className="flex items-center gap-1 hover:text-orange-400"
-            >
+            <a href="mailto:enquiry@swasticsolutions.in" className="flex items-center gap-1 hover:text-orange-400">
               <Mail size={14} />
               enquiry@swasticsolutions.in
             </a>
 
           </div>
+
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4">
 
-        {/* HEADER ROW */}
+      {/* HEADER */}
+      <div className="max-w-7xl mx-auto px-4 relative">
+
         <div className="flex justify-between items-center py-4">
 
           {/* LOGO */}
@@ -184,89 +182,100 @@ export function Header() {
             </div>
 
             <div>
-              <h1 className="text-2xl font-bold text-blue-900">
-                Swastic Solutions
-              </h1>
-              <p className="text-xs text-gray-600">
-                Industrial Testing Equipment
-              </p>
+              <h1 className="text-2xl font-bold text-blue-900">Swastic Solutions</h1>
+              <p className="text-xs text-gray-600">Industrial Testing Equipment</p>
             </div>
           </div>
 
-          {/* DESKTOP NAVIGATION */}
+
+          {/* DESKTOP MENU */}
           <nav className="hidden lg:flex items-center gap-8">
 
             {navItems.map((item) => {
 
               if (item.label === "Products") {
+
                 return (
-                  <div key={item.page} className="relative group">
+
+                  <div key={item.page} className="group">
 
                     <button className="font-medium text-gray-700 hover:text-orange-500">
                       Products
                     </button>
 
-                    {/* MEGA MENU */}
-                    <div className="absolute left-0 top-full mt-2 w-[900px] bg-white shadow-2xl grid grid-cols-3 border 
-                                    opacity-0 invisible 
-                                    group-hover:opacity-100 group-hover:visible 
-                                    transition-all duration-200 z-50">
 
-                      {/* CATEGORY COLUMN */}
-                      <div className="bg-gray-100 border-r">
+                    {/* FULL WIDTH MEGA MENU */}
+                    <div className="absolute left-0 right-0 top-full bg-white shadow-xl border
+                                    opacity-0 invisible
+                                    group-hover:visible group-hover:opacity-100
+                                    transition-all duration-200">
 
-                        {Object.keys(megaMenu).map((cat) => (
-                          <div
-                            key={cat}
-                            onMouseEnter={() => setActiveCategory(cat)}
-                            className={`px-4 py-3 text-sm cursor-pointer ${
-                              activeCategory === cat
-                                ? "bg-orange-500 text-white"
-                                : "hover:bg-gray-200"
-                            }`}
-                          >
-                            {cat}
-                          </div>
-                        ))}
+                      <div className="max-w-7xl mx-auto grid grid-cols-3">
 
-                      </div>
+                        {/* CATEGORY COLUMN */}
+                        <div className="bg-gray-100 border-r">
 
-                      {/* PRODUCT LIST */}
-                      <div className="p-4 border-r">
+                          {Object.keys(megaMenu).map((cat) => (
 
-                        {megaMenu[activeCategory].map((product) => (
-                          <div
-                            key={product}
-                            className="py-2 text-sm hover:text-orange-500 cursor-pointer"
-                          >
-                            {product}
-                          </div>
-                        ))}
+                            <div
+                              key={cat}
+                              onMouseEnter={() => setActiveCategory(cat)}
+                              className={`px-5 py-3 text-sm cursor-pointer ${
+                                activeCategory === cat
+                                  ? "bg-orange-500 text-white"
+                                  : "hover:bg-gray-200"
+                              }`}
+                            >
+                              {cat}
+                            </div>
 
-                      </div>
+                          ))}
 
-                      {/* PRODUCT PREVIEW */}
-                      <div className="p-4 flex flex-col items-center text-center">
+                        </div>
 
-                        <img
-                          src="/images/testing-machine.jpg"
-                          className="h-40 object-contain mb-3"
-                        />
 
-                        <p className="text-sm text-gray-600">
-                          Industrial hardness testing system for plastic and
-                          rubber materials.
-                        </p>
+                        {/* PRODUCT LIST */}
+                        <div className="p-5 border-r">
 
-                        <button className="mt-3 text-orange-500 font-semibold">
-                          Read More →
-                        </button>
+                          {megaMenu[activeCategory].map((product) => (
+
+                            <div
+                              key={product}
+                              className="py-2 text-sm hover:text-orange-500 cursor-pointer"
+                            >
+                              {product}
+                            </div>
+
+                          ))}
+
+                        </div>
+
+
+                        {/* IMAGE PREVIEW */}
+                        <div className="p-5 flex flex-col items-center text-center">
+
+                          <img
+                            src="/images/testing-machine.jpg"
+                            className="h-40 object-contain mb-3"
+                          />
+
+                          <p className="text-sm text-gray-600">
+                            Automatic hardness testing system for plastic
+                            and rubber materials.
+                          </p>
+
+                          <button className="mt-3 text-orange-500 font-semibold">
+                            Read More →
+                          </button>
+
+                        </div>
 
                       </div>
 
                     </div>
 
                   </div>
+
                 );
               }
 
@@ -283,11 +292,13 @@ export function Header() {
                   {item.label}
                 </button>
               );
+
             })}
 
           </nav>
 
-          {/* MOBILE MENU BUTTON */}
+
+          {/* MOBILE MENU */}
           <button
             className="lg:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -297,11 +308,14 @@ export function Header() {
 
         </div>
 
-        {/* MOBILE NAVIGATION */}
+
+        {/* MOBILE NAV */}
         {isMenuOpen && (
-          <nav className="lg:hidden pb-4 border-t">
+
+          <nav className="lg:hidden border-t pb-4">
 
             {navItems.map((item) => (
+
               <button
                 key={item.page}
                 onClick={() => {
@@ -312,12 +326,15 @@ export function Header() {
               >
                 {item.label}
               </button>
+
             ))}
 
           </nav>
+
         )}
 
       </div>
+
     </header>
   );
 }
