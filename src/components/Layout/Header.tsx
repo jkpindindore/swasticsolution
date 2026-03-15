@@ -117,6 +117,29 @@ export function Header() {
     { label: 'Contact', page: 'contact' },
   ];
 
+
+  if (item.label === "Products") {
+  return (
+    <div
+      key={item.page}
+      className="relative"
+      onMouseEnter={() => setShowMega(true)}
+      onMouseLeave={() => {
+        setTimeout(() => {
+          setShowMega(false);
+        }, 200);
+      }}
+    >
+      <button
+        className={`font-medium ${
+          currentPage === item.page
+            ? "text-orange-500"
+            : "text-gray-700 hover:text-orange-500"
+        }`}
+      >
+        {item.label}
+      </button>
+
   const megaMenu: Record<string, string[]> = {
     "Plastic Testing Equipment": [
       "Electromechanical Universal Testing Machines for Plastic Testing",
@@ -325,6 +348,65 @@ export function Header() {
 
         </div>
 
+
+ {/* Invisible hover bridge */}
+      <div className="absolute top-full left-0 w-full h-4"></div>
+
+      {showMega && (
+        <div className="absolute left-0 top-full mt-2 w-[900px] bg-white shadow-2xl grid grid-cols-3 border z-50">
+
+          {/* Category Column */}
+          <div className="bg-gray-100 border-r">
+            {Object.keys(megaMenu).map((cat) => (
+              <div
+                key={cat}
+                onMouseEnter={() => setActiveCategory(cat)}
+                className={`px-4 py-3 cursor-pointer text-sm ${
+                  activeCategory === cat
+                    ? "bg-orange-500 text-white"
+                    : "hover:bg-gray-200"
+                }`}
+              >
+                {cat}
+              </div>
+            ))}
+          </div>
+
+          {/* Product List */}
+          <div className="p-4 border-r">
+            {megaMenu[activeCategory].map((product) => (
+              <div
+                key={product}
+                className="py-2 text-sm hover:text-orange-500 cursor-pointer"
+              >
+                {product}
+              </div>
+            ))}
+          </div>
+
+          {/* Product Preview */}
+          <div className="p-4 flex flex-col items-center text-center">
+            <img
+              src="/images/testing-machine.jpg"
+              className="h-40 object-contain mb-3"
+            />
+
+            <p className="text-sm text-gray-600">
+              Digi Test II is an automatic Shore, IRHD and VLRH hardness
+              testing system designed for advanced plastic and rubber testing
+              applications.
+            </p>
+
+            <button className="mt-3 text-orange-500 font-semibold">
+              Read More →
+            </button>
+          </div>
+
+        </div>
+      )}
+    </div>
+  );
+}
 
         {/* Mobile Menu */}
 
