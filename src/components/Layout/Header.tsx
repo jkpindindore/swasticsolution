@@ -94,251 +94,200 @@
 //   );
 // }
 
-
-import { Menu, X, Phone, Mail } from 'lucide-react';
-import { useState } from 'react';
-import { useRouter } from '../../context/RouterContext';
-import { Page } from '../../types';
+import { Menu, X, Phone, Mail } from "lucide-react";
+import { useState } from "react";
+import { useRouter } from "../../context/RouterContext";
+import { Page } from "../../types";
 
 export function Header() {
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showMega, setShowMega] = useState(false);
   const [activeCategory, setActiveCategory] = useState("Plastic Testing Equipment");
 
   const { currentPage, navigate } = useRouter();
 
   const navItems: { label: string; page: Page }[] = [
-    { label: 'Home', page: 'home' },
-    { label: 'About Us', page: 'about' },
-    { label: 'Products', page: 'products' },
-    { label: 'Industries', page: 'industries' },
-    { label: 'Blog', page: 'blog' },
-    { label: 'Contact', page: 'contact' },
+    { label: "Home", page: "home" },
+    { label: "About Us", page: "about" },
+    { label: "Products", page: "products" },
+    { label: "Industries", page: "industries" },
+    { label: "Blog", page: "blog" },
+    { label: "Contact", page: "contact" },
   ];
-
-
-  if (item.label === "Products") {
-  return (
-    <div
-      key={item.page}
-      className="relative"
-      onMouseEnter={() => setShowMega(true)}
-      onMouseLeave={() => {
-        setTimeout(() => {
-          setShowMega(false);
-        }, 200);
-      }}
-    >
-      <button
-        className={`font-medium ${
-          currentPage === item.page
-            ? "text-orange-500"
-            : "text-gray-700 hover:text-orange-500"
-        }`}
-      >
-        {item.label}
-      </button>
 
   const megaMenu: Record<string, string[]> = {
     "Plastic Testing Equipment": [
-      "Electromechanical Universal Testing Machines for Plastic Testing",
+      "Electromechanical Universal Testing Machines",
       "Fruit Firmness Tester",
-      "Automatic Capsule and Soft Gel Hardness Tester",
+      "Automatic Capsule Hardness Tester",
       "Ball Rebound Tester",
       "Pendulum Rebound Resilience Tester",
       "Pusey & Jones Tester",
-      "Advanced Portable Shore Durometer System",
-      "Automatic Shore, IRHD and VLRH Hardness Testing System",
-      "Classic Analogue Shore Durometer",
-      "HDT/VICAT Testing Machine – Thermal Analysis for Plastics"
+      "Portable Shore Durometer System",
+      "Automatic Shore IRHD Hardness System",
+      "Analogue Shore Durometer",
+      "HDT/VICAT Testing Machine",
     ],
     "Metal Testing Equipment": [
       "Universal Testing Machine",
       "Rockwell Hardness Tester",
       "Brinell Hardness Tester",
       "Vickers Hardness Tester",
-      "Impact Testing Machine"
+      "Impact Testing Machine",
     ],
     "Rubber Testing Equipment": [
       "Rubber Hardness Tester",
-      "Tensile Testing Machine for Rubber",
-      "Rebound Resilience Tester"
-    ]
+      "Rubber Tensile Tester",
+      "Rebound Resilience Tester",
+    ],
   };
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
 
-      {/* Top Contact Bar */}
-
+      {/* TOP CONTACT BAR */}
       <div className="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-2">
-        <div className="max-w-7xl mx-auto px-4 flex flex-wrap justify-between items-center text-sm">
-          <div className="flex items-center gap-4">
-            <a href="tel:+917987485024" className="flex items-center gap-1 hover:text-orange-400">
+        <div className="max-w-7xl mx-auto px-4 flex justify-between text-sm">
+          <div className="flex gap-4">
+
+            <a
+              href="tel:+917987485024"
+              className="flex items-center gap-1 hover:text-orange-400"
+            >
               <Phone size={14} />
-              <span>+91 7987485024</span>
+              +91 7987485024
             </a>
 
-            <a href="mailto:enquiry@swasticsolutions.in" className="flex items-center gap-1 hover:text-orange-400">
+            <a
+              href="mailto:enquiry@swasticsolutions.in"
+              className="flex items-center gap-1 hover:text-orange-400"
+            >
               <Mail size={14} />
-              <span>enquiry@swasticsolutions.in</span>
+              enquiry@swasticsolutions.in
             </a>
+
           </div>
         </div>
       </div>
 
-
       <div className="max-w-7xl mx-auto px-4">
 
+        {/* HEADER ROW */}
         <div className="flex justify-between items-center py-4">
 
-          {/* Logo */}
-
+          {/* LOGO */}
           <div
             className="flex items-center gap-3 cursor-pointer"
-            onClick={() => navigate('home')}
+            onClick={() => navigate("home")}
           >
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-orange-500 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-orange-500 rounded-lg flex items-center justify-center text-white font-bold">
               SS
             </div>
 
             <div>
-              <h1 className="text-2xl font-bold text-blue-900">Swastic Solutions</h1>
-              <p className="text-xs text-gray-600">Industrial Testing Equipment</p>
+              <h1 className="text-2xl font-bold text-blue-900">
+                Swastic Solutions
+              </h1>
+              <p className="text-xs text-gray-600">
+                Industrial Testing Equipment
+              </p>
             </div>
           </div>
 
-
-          {/* Desktop Navigation */}
-
+          {/* DESKTOP NAVIGATION */}
           <nav className="hidden lg:flex items-center gap-8">
 
             {navItems.map((item) => {
 
               if (item.label === "Products") {
-
                 return (
+                  <div key={item.page} className="relative group">
 
-                  <div
-                    key={item.page}
-                    className="relative"
-                    onMouseEnter={() => setShowMega(true)}
-                    onMouseLeave={() => setShowMega(false)}
-                  >
-
-                    <button
-                      className={`font-medium ${
-                        currentPage === item.page
-                          ? 'text-orange-500'
-                          : 'text-gray-700 hover:text-orange-500'
-                      }`}
-                    >
-                      {item.label}
+                    <button className="font-medium text-gray-700 hover:text-orange-500">
+                      Products
                     </button>
 
+                    {/* MEGA MENU */}
+                    <div className="absolute left-0 top-full mt-2 w-[900px] bg-white shadow-2xl grid grid-cols-3 border 
+                                    opacity-0 invisible 
+                                    group-hover:opacity-100 group-hover:visible 
+                                    transition-all duration-200 z-50">
 
-                    {/* Mega Menu */}
+                      {/* CATEGORY COLUMN */}
+                      <div className="bg-gray-100 border-r">
 
-                    {showMega && (
-
-                      <div className="absolute left-0 top-10 w-[900px] bg-white shadow-2xl grid grid-cols-3 border z-50">
-
-                        {/* Category Column */}
-
-                        <div className="bg-gray-100 border-r">
-
-                          {Object.keys(megaMenu).map((cat) => (
-
-                            <div
-                              key={cat}
-                              onMouseEnter={() => setActiveCategory(cat)}
-                              className={`px-4 py-3 cursor-pointer text-sm ${
-                                activeCategory === cat
-                                  ? "bg-orange-500 text-white"
-                                  : "hover:bg-gray-200"
-                              }`}
-                            >
-                              {cat}
-                            </div>
-
-                          ))}
-
-                        </div>
-
-
-                        {/* Product List */}
-
-                        <div className="p-4 border-r">
-
-                          {megaMenu[activeCategory].map((product) => (
-
-                            <div
-                              key={product}
-                              className="py-2 text-sm hover:text-orange-500 cursor-pointer"
-                            >
-                              {product}
-                            </div>
-
-                          ))}
-
-                        </div>
-
-
-                        {/* Product Preview */}
-
-                        <div className="p-4 flex flex-col items-center text-center">
-
-                          <img
-                            src="/images/testing-machine.jpg"
-                            className="h-40 object-contain mb-3"
-                          />
-
-                          <p className="text-sm text-gray-600">
-                            Digi Test II is an automatic Shore, IRHD and VLRH hardness testing
-                            system designed for advanced plastic and rubber testing applications.
-                          </p>
-
-                          <button className="mt-3 text-orange-500 font-semibold">
-                            Read More →
-                          </button>
-
-                        </div>
+                        {Object.keys(megaMenu).map((cat) => (
+                          <div
+                            key={cat}
+                            onMouseEnter={() => setActiveCategory(cat)}
+                            className={`px-4 py-3 text-sm cursor-pointer ${
+                              activeCategory === cat
+                                ? "bg-orange-500 text-white"
+                                : "hover:bg-gray-200"
+                            }`}
+                          >
+                            {cat}
+                          </div>
+                        ))}
 
                       </div>
 
-                    )}
+                      {/* PRODUCT LIST */}
+                      <div className="p-4 border-r">
+
+                        {megaMenu[activeCategory].map((product) => (
+                          <div
+                            key={product}
+                            className="py-2 text-sm hover:text-orange-500 cursor-pointer"
+                          >
+                            {product}
+                          </div>
+                        ))}
+
+                      </div>
+
+                      {/* PRODUCT PREVIEW */}
+                      <div className="p-4 flex flex-col items-center text-center">
+
+                        <img
+                          src="/images/testing-machine.jpg"
+                          className="h-40 object-contain mb-3"
+                        />
+
+                        <p className="text-sm text-gray-600">
+                          Industrial hardness testing system for plastic and
+                          rubber materials.
+                        </p>
+
+                        <button className="mt-3 text-orange-500 font-semibold">
+                          Read More →
+                        </button>
+
+                      </div>
+
+                    </div>
 
                   </div>
-
                 );
-
               }
 
-
               return (
-
                 <button
                   key={item.page}
                   onClick={() => navigate(item.page)}
-                  className={`font-medium transition-colors ${
+                  className={`font-medium ${
                     currentPage === item.page
-                      ? 'text-orange-500'
-                      : 'text-gray-700 hover:text-orange-500'
+                      ? "text-orange-500"
+                      : "text-gray-700 hover:text-orange-500"
                   }`}
                 >
                   {item.label}
                 </button>
-
               );
-
             })}
 
           </nav>
 
-
-          {/* Mobile Menu Button */}
-
+          {/* MOBILE MENU BUTTON */}
           <button
             className="lg:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -348,97 +297,27 @@ export function Header() {
 
         </div>
 
-
- {/* Invisible hover bridge */}
-      <div className="absolute top-full left-0 w-full h-4"></div>
-
-      {showMega && (
-        <div className="absolute left-0 top-full mt-2 w-[900px] bg-white shadow-2xl grid grid-cols-3 border z-50">
-
-          {/* Category Column */}
-          <div className="bg-gray-100 border-r">
-            {Object.keys(megaMenu).map((cat) => (
-              <div
-                key={cat}
-                onMouseEnter={() => setActiveCategory(cat)}
-                className={`px-4 py-3 cursor-pointer text-sm ${
-                  activeCategory === cat
-                    ? "bg-orange-500 text-white"
-                    : "hover:bg-gray-200"
-                }`}
-              >
-                {cat}
-              </div>
-            ))}
-          </div>
-
-          {/* Product List */}
-          <div className="p-4 border-r">
-            {megaMenu[activeCategory].map((product) => (
-              <div
-                key={product}
-                className="py-2 text-sm hover:text-orange-500 cursor-pointer"
-              >
-                {product}
-              </div>
-            ))}
-          </div>
-
-          {/* Product Preview */}
-          <div className="p-4 flex flex-col items-center text-center">
-            <img
-              src="/images/testing-machine.jpg"
-              className="h-40 object-contain mb-3"
-            />
-
-            <p className="text-sm text-gray-600">
-              Digi Test II is an automatic Shore, IRHD and VLRH hardness
-              testing system designed for advanced plastic and rubber testing
-              applications.
-            </p>
-
-            <button className="mt-3 text-orange-500 font-semibold">
-              Read More →
-            </button>
-          </div>
-
-        </div>
-      )}
-    </div>
-  );
-}
-
-        {/* Mobile Menu */}
-
+        {/* MOBILE NAVIGATION */}
         {isMenuOpen && (
-
           <nav className="lg:hidden pb-4 border-t">
 
             {navItems.map((item) => (
-
               <button
                 key={item.page}
                 onClick={() => {
                   navigate(item.page);
                   setIsMenuOpen(false);
                 }}
-                className={`block w-full text-left py-3 px-4 ${
-                  currentPage === item.page
-                    ? 'text-orange-500 bg-orange-50'
-                    : 'text-gray-700 hover:bg-gray-50'
-                }`}
+                className="block w-full text-left py-3 px-4 text-gray-700 hover:bg-gray-50"
               >
                 {item.label}
               </button>
-
             ))}
 
           </nav>
-
         )}
 
       </div>
-
     </header>
   );
 }
