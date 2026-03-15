@@ -68,7 +68,7 @@ export function Home() {
             </div>
             <div className="hidden lg:block">
               <img
-                src="https://images.pexels.com/photos/8327945/pexels-photo-8327945.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="https://cpimg.tistatic.com//150059/6/template_photo_5.jpg"
                 alt="Testing Equipment"
                 className="rounded-lg shadow-2xl"
               />
