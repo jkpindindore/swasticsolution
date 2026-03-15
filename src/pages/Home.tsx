@@ -45,7 +45,7 @@ export function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-                Industrial Material Testing Machines & Metallurgical Equipment Supplier
+                Industrial Material Testing Machines & Metallurgical Equipment Supplier consumable item
               </h1>
               <p className="text-xl mb-8 text-blue-100 leading-relaxed">
                 Providing high-precision testing machines for automobile, steel, forging, laboratories, and research institutes.
