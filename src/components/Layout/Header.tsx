@@ -99,6 +99,7 @@ import { Menu, X, Phone, Mail } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "../../context/RouterContext";
 import { Page } from "../../types";
+import { images  } logo from "../images/logo.svg";
 
 export function Header() {
 
@@ -115,6 +116,8 @@ export function Header() {
     { label: "Blog", page: "blog" },
     { label: "Contact", page: "contact" },
   ];
+
+
 
   const megaMenu: Record<string, string[]> = {
     "Plastic Testing Equipment": [
@@ -178,9 +181,19 @@ export function Header() {
             className="flex items-center gap-3 cursor-pointer"
             onClick={() => navigate("home")}
           >
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-orange-500 rounded-lg flex items-center justify-center text-white font-bold">
-              SS
-            </div>
+
+
+
+
+  <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-orange-500 rounded-lg flex items-center justify-center overflow-hidden">
+  <img 
+    src={logo} 
+    alt="Swastic Solutions Logo"
+    className="w-full h-full object-contain"
+  />
+</div>
+
+
 
             <div>
               <h1 className="text-2xl font-bold text-blue-900">Swastic Solutions</h1>
